@@ -1,5 +1,5 @@
 {
-  "name": "express-blog-intro",
+  "name": "express-blog-routing",
   "version": "1.0.0",
   "description": "Minimal Express blog for tutorial",
   "main": "app.js",

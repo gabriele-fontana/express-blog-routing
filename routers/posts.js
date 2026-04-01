@@ -1,10 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const blogPosts = require('../assets/blogPosts');
 
-// GET /posts - List of posts
-router.get('/', (req, res) => {
-    res.send('List of posts');
-});
 
 // GET /posts/:id - Details of a single post
 router.get('/:id', (req, res) => {
@@ -25,5 +22,11 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     res.send(`Delete post ${req.params.id}`);
 });
+
+//INDEX /posts - GET posts JSON
+router.get('/', (req, res) => {
+    res.json(blogPosts);
+});
+
 
 module.exports = router;
