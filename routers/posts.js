@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const blogPosts = require('../assets/blogPosts');
+let blogPosts = require('../assets/blogPosts');
 
 
 
@@ -19,17 +19,19 @@ router.put('/:id', (req, res) => {
     res.send(`Update post ${req.params.id}`);
 });
 
-// DELETE /posts/:id - Delete a post
-router.delete('/:id', (req, res) => {
-    res.send(`Delete post ${req.params.id}`);
-});
-
-
 //SHOW /posts/:id GET single post JSON
 router.get('/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const post = blogPosts.find(post => post.id === id)
     res.json(post);
+})
+
+//DESTROY /posts/:id DELETE single post
+router.delete('/:id', (req,res) => {
+    const id = parseInt(req.params.id);
+    blogPosts = blogPosts.filter(post => post.id !== id)
+    res.json({message:`post ${id} has been deleted`, remainingPosts : blogPosts});
+    
 })
 
 module.exports = router;
