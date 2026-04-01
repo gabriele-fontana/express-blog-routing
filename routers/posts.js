@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
 router.delete('/:id', (req,res) => {
     const id = parseInt(req.params.id);
     blogPosts = blogPosts.filter(post => post.id !== id)
-    res.json({message:`post ${id} has been deleted`, remainingPosts : blogPosts});
+    res.json({message:`post ${id} has been deleted`, currentArrayLength: blogPosts.length});
     
 })
 
